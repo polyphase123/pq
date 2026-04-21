@@ -76,6 +76,17 @@
                     <div class="panel-item" style="background:rgba(16, 185, 129, 0.1);"><span class="p-label" style="color:var(--success)">29kWp Common DT Rank</span><span class="p-value" id="pRank29" style="color:var(--success)">--</span></div>
                     <div style="padding: 1rem;"><div style="height: 120px;"><canvas id="percChart"></canvas></div></div>
                 </div>
+                <div class="panel" id="meralcoPanel" style="display: none; border: 1px solid var(--primary);">
+                    <div class="panel-header" style="background:var(--primary-light); color:var(--primary);">Meralco Percentiles (kWp)</div>
+                    <div class="panel-item"><span class="p-label">10th Percentile</span><span class="p-value" id="merP10">--</span></div>
+                    <div class="panel-item"><span class="p-label">25th Percentile</span><span class="p-value" id="merP25">--</span></div>
+                    <div class="panel-item"><span class="p-label">Median (50th)</span><span class="p-value" id="merP50">--</span></div>
+                    <div class="panel-item"><span class="p-label">75th Percentile</span><span class="p-value" id="merP75">--</span></div>
+                    <div class="panel-item"><span class="p-label">90th Percentile</span><span class="p-value" id="merP90">--</span></div>
+                    <div class="panel-item" style="background:var(--primary-light);"><span class="p-label" style="color:var(--primary)">7kWp Percentile Rank</span><span class="p-value" id="merRank7" style="color:var(--primary)">--</span></div>
+                    <div class="panel-item" style="background:var(--primary-light);"><span class="p-label" style="color:var(--primary)">15kWp Percentile Rank</span><span class="p-value" id="merRank15" style="color:var(--primary)">--</span></div>
+                    <div class="panel-item" style="background:var(--primary-light);"><span class="p-label" style="color:var(--primary)">Meralco Average Capacity</span><span class="p-value" id="merAvg" style="color:var(--primary)">--</span></div>
+                </div>
                 <div class="panel" id="ecPanel" style="display: none; border: 1px solid #fed7aa;">
                     <div class="panel-header" style="background:#fff7ed; color:#9a3412;">Electric Cooperative Percentiles (kWp)</div>
                     <div class="panel-item"><span class="p-label">10th Percentile</span><span class="p-value" id="ecP10">--</span></div>
@@ -83,6 +94,7 @@
                     <div class="panel-item"><span class="p-label">Median (50th)</span><span class="p-value" id="ecP50">--</span></div>
                     <div class="panel-item"><span class="p-label">75th Percentile</span><span class="p-value" id="ecP75">--</span></div>
                     <div class="panel-item"><span class="p-label">90th Percentile</span><span class="p-value" id="ecP90">--</span></div>
+                    <div class="panel-item" style="background:#fff7ed;"><span class="p-label" style="color:#c2410c">7kWp Percentile Rank</span><span class="p-value" id="ecRank7" style="color:#c2410c">--</span></div>
                     <div class="panel-item" style="background:#fff7ed;"><span class="p-label" style="color:#c2410c">EC Average Capacity</span><span class="p-value" id="ecAvg" style="color:#c2410c">--</span></div>
                 </div>
                 <div style="padding:0 1rem; color:var(--text-muted); font-size:0.75rem; line-height:1.4;">
@@ -96,71 +108,1545 @@
   "net_metering": {
     "Luzon": {
       "All": {
-        "counts": [4929, 8854, 2630, 676, 361, 140, 160, 54, 57, 39, 67, 23, 37, 13, 16, 9, 10, 7, 11, 117, 10],
-        "benchmarks": { "p10": 76.8, "p15": 90.3, "p20": 93.9, "p29": 96.4 },
-        "percentiles": { "10": 3.06, "25": 4.72, "50": 5.85, "75": 9.9, "90": 14.85 },
-        "ec_percentiles": { "10": 3.68, "25": 5.45, "50": 7.02, "75": 10.8, "90": 19.8, "avg": 10.81 },
-        "total_count": 18220, "total_capacity": 161935, "impact": { "co2_tons": 157222, "peak_mw": 129.5 }, "top_du": { "MERALCO": 11032 }
+        "counts": [
+          4929,
+          8854,
+          2630,
+          676,
+          361,
+          140,
+          160,
+          54,
+          57,
+          39,
+          67,
+          23,
+          37,
+          13,
+          16,
+          9,
+          10,
+          7,
+          11,
+          117,
+          10
+        ],
+        "benchmarks": {
+          "p10": 76.83863885839737,
+          "p15": 90.31833150384193,
+          "p20": 93.92425905598245,
+          "p29": 96.4324917672887
+        },
+        "percentiles": {
+          "10": 3.06,
+          "25": 4.72,
+          "50": 5.85,
+          "75": 9.9,
+          "90": 14.85,
+          "avg": 8.887754390779364,
+          "max": 100.0,
+          "min": 0.315
+        },
+        "ec_percentiles": {
+          "10": 3.68,
+          "25": 5.45,
+          "50": 7.02,
+          "75": 10.8,
+          "90": 19.8,
+          "avg": 10.808819064966606,
+          "rank7": 49.605343047966,
+          "count": 4941
+        },
+        "meralco_percentiles": {
+          "10": 2.85,
+          "25": 3.6,
+          "50": 5.4,
+          "75": 8.19,
+          "90": 11.34,
+          "avg": 7.572565355329949,
+          "rank7": 68.8723712835388,
+          "rank15": 93.72733865119652,
+          "count": 11032
+        },
+        "total_count": 18220,
+        "total_capacity": 161934.885,
+        "impact": {
+          "annual_gwh": 224.603685495,
+          "homes": 93584,
+          "co2_tons": 157222.5798465,
+          "peak_mw": 129.547908
+        },
+        "top_du": {
+          "MERALCO": 11032,
+          "AEC": 808,
+          "PELCO I": 741,
+          "PENELCO": 438,
+          "TEI": 374,
+          "SFELAPCO": 373,
+          "BATELEC II": 373,
+          "PELCO II": 352,
+          "PRESCO": 312,
+          "PANELCO III": 304
+        }
       },
       "NCR": {
-        "counts": [1682, 2476, 774, 196, 89, 39, 41, 14, 12, 3, 13, 6, 7, 2, 0, 3, 3, 3, 5, 33, 2],
-        "benchmarks": { "p10": 78.4, "p15": 91.5, "p20": 95.1, "p29": 97.2 },
-        "percentiles": { "10": 3.0, "25": 4.05, "50": 5.5, "75": 9.66, "90": 13.2 },
+        "counts": [
+          1682,
+          2476,
+          774,
+          196,
+          89,
+          39,
+          41,
+          14,
+          12,
+          3,
+          13,
+          6,
+          7,
+          2,
+          0,
+          3,
+          3,
+          3,
+          5,
+          33,
+          2
+        ],
+        "benchmarks": {
+          "p10": 78.41939663150102,
+          "p15": 91.54173607255228,
+          "p20": 95.05830094392005,
+          "p29": 97.22376457523598
+        },
+        "percentiles": {
+          "10": 3.0,
+          "25": 4.05,
+          "50": 5.5,
+          "75": 9.655000000000001,
+          "90": 13.2,
+          "avg": 8.337256524153249,
+          "max": 100.0,
+          "min": 0.315
+        },
         "ec_percentiles": null,
-        "total_count": 5403, "total_capacity": 45046, "impact": { "co2_tons": 43735, "peak_mw": 36.0 }, "top_du": { "MERALCO": 5403 }
+        "meralco_percentiles": {
+          "10": 3.0,
+          "25": 4.05,
+          "50": 5.5,
+          "75": 9.655000000000001,
+          "90": 13.2,
+          "avg": 8.337256524153249,
+          "rank7": 62.63187118267629,
+          "rank15": 91.54173607255228,
+          "count": 5403
+        },
+        "total_count": 5403,
+        "total_capacity": 45046.197,
+        "impact": {
+          "annual_gwh": 62.479075239,
+          "homes": 26032,
+          "co2_tons": 43735.352667299994,
+          "peak_mw": 36.0369576
+        },
+        "top_du": {
+          "MERALCO": 5403
+        }
       },
       "Outside NCR": {
-        "counts": [3247, 6378, 1856, 480, 272, 101, 119, 40, 45, 36, 54, 17, 30, 11, 16, 6, 7, 4, 6, 84, 8],
-        "benchmarks": { "p10": 76.2, "p15": 89.8, "p20": 93.4, "p29": 96.1 },
-        "percentiles": { "10": 3.12, "25": 4.95, "50": 6.0, "75": 9.99, "90": 15.24 },
-        "ec_percentiles": { "10": 3.68, "25": 5.45, "50": 7.02, "75": 10.8, "90": 19.8, "avg": 10.81 },
-        "total_count": 12817, "total_capacity": 116889, "impact": { "co2_tons": 113487, "peak_mw": 93.5 }, "top_du": { "MERALCO": 5629 }
+        "counts": [
+          3247,
+          6378,
+          1856,
+          480,
+          272,
+          101,
+          119,
+          40,
+          45,
+          36,
+          54,
+          17,
+          30,
+          11,
+          16,
+          6,
+          7,
+          4,
+          6,
+          84,
+          8
+        ],
+        "benchmarks": {
+          "p10": 76.17227120230943,
+          "p15": 89.80260591402043,
+          "p20": 93.44620425996723,
+          "p29": 96.09893110712335
+        },
+        "percentiles": {
+          "10": 3.12,
+          "25": 4.95,
+          "50": 6.0,
+          "75": 9.99,
+          "90": 15.243999999999996,
+          "avg": 9.119816493719279,
+          "max": 100.0,
+          "min": 0.429
+        },
+        "ec_percentiles": {
+          "10": 3.68,
+          "25": 5.45,
+          "50": 7.02,
+          "75": 10.8,
+          "90": 19.8,
+          "avg": 10.808819064966606,
+          "rank7": 49.605343047966,
+          "count": 4941
+        },
+        "meralco_percentiles": {
+          "10": 2.5,
+          "25": 3.36,
+          "50": 5.4,
+          "75": 7.04,
+          "90": 10.45,
+          "avg": 6.838575945993959,
+          "rank7": 74.86232012790904,
+          "rank15": 95.82519097530646,
+          "count": 5629
+        },
+        "total_count": 12817,
+        "total_capacity": 116888.688,
+        "impact": {
+          "annual_gwh": 162.12461025599995,
+          "homes": 67551,
+          "co2_tons": 113487.22717919997,
+          "peak_mw": 93.5109504
+        },
+        "top_du": {
+          "MERALCO": 5629,
+          "AEC": 808,
+          "PELCO I": 741,
+          "PENELCO": 438,
+          "TEI": 374,
+          "SFELAPCO": 373,
+          "BATELEC II": 373,
+          "PELCO II": 352,
+          "PRESCO": 312,
+          "PANELCO III": 304
+        }
       }
     },
     "Visayas": {
       "All": {
-        "counts": [843, 1314, 468, 161, 112, 55, 59, 21, 19, 22, 36, 12, 15, 5, 9, 19, 8, 4, 10, 83, 18],
-        "benchmarks": { "p10": 67.1, "p15": 79.9, "p20": 84.9, "p29": 89.3 },
-        "percentiles": { "10": 2.86, "25": 4.95, "50": 6.54, "75": 12.06, "90": 30.21 },
-        "ec_percentiles": { "10": 1.05, "25": 3.24, "50": 5.55, "75": 10.8, "90": 25.48, "avg": 12.08 },
-        "total_count": 3293, "total_capacity": 45513, "impact": { "co2_tons": 44189, "peak_mw": 36.4 }, "top_du": { "NEPC": 1325 }
+        "counts": [
+          843,
+          1314,
+          468,
+          161,
+          112,
+          55,
+          59,
+          21,
+          19,
+          22,
+          36,
+          12,
+          15,
+          5,
+          9,
+          19,
+          8,
+          4,
+          10,
+          83,
+          18
+        ],
+        "benchmarks": {
+          "p10": 67.05132098390524,
+          "p15": 79.86638323716976,
+          "p20": 84.90737928940176,
+          "p29": 89.31065897358033
+        },
+        "percentiles": {
+          "10": 2.856000000000001,
+          "25": 4.95,
+          "50": 6.54,
+          "75": 12.06,
+          "90": 30.21,
+          "avg": 13.821189492863649,
+          "max": 100.0,
+          "min": 0.25
+        },
+        "ec_percentiles": {
+          "10": 1.05,
+          "25": 3.2425,
+          "50": 5.55,
+          "75": 10.8,
+          "90": 25.478000000000005,
+          "avg": 12.084749551166967,
+          "rank7": 59.60502692998204,
+          "count": 1114
+        },
+        "meralco_percentiles": null,
+        "total_count": 3293,
+        "total_capacity": 45513.176999999996,
+        "impact": {
+          "annual_gwh": 63.126776499,
+          "homes": 26302,
+          "co2_tons": 44188.743549299994,
+          "peak_mw": 36.4105416
+        },
+        "top_du": {
+          "NEPC": 1325,
+          "VECO": 599,
+          "NORECO II": 319,
+          "MEPC": 170,
+          "ILECO I": 117,
+          "BOHECO I": 108,
+          "LEYECO V": 84,
+          "CEBECO I": 82,
+          "BOHECO II": 78,
+          "MECO": 64
+        }
+      },
+      "NCR": {
+        "total_count": 0,
+        "total_capacity": 0
+      },
+      "Outside NCR": {
+        "counts": [
+          843,
+          1314,
+          468,
+          161,
+          112,
+          55,
+          59,
+          21,
+          19,
+          22,
+          36,
+          12,
+          15,
+          5,
+          9,
+          19,
+          8,
+          4,
+          10,
+          83,
+          18
+        ],
+        "benchmarks": {
+          "p10": 67.05132098390524,
+          "p15": 79.86638323716976,
+          "p20": 84.90737928940176,
+          "p29": 89.31065897358033
+        },
+        "percentiles": {
+          "10": 2.856000000000001,
+          "25": 4.95,
+          "50": 6.54,
+          "75": 12.06,
+          "90": 30.21,
+          "avg": 13.821189492863649,
+          "max": 100.0,
+          "min": 0.25
+        },
+        "ec_percentiles": {
+          "10": 1.05,
+          "25": 3.2425,
+          "50": 5.55,
+          "75": 10.8,
+          "90": 25.478000000000005,
+          "avg": 12.084749551166967,
+          "rank7": 59.60502692998204,
+          "count": 1114
+        },
+        "meralco_percentiles": null,
+        "total_count": 3293,
+        "total_capacity": 45513.176999999996,
+        "impact": {
+          "annual_gwh": 63.126776499,
+          "homes": 26302,
+          "co2_tons": 44188.743549299994,
+          "peak_mw": 36.4105416
+        },
+        "top_du": {
+          "NEPC": 1325,
+          "VECO": 599,
+          "NORECO II": 319,
+          "MEPC": 170,
+          "ILECO I": 117,
+          "BOHECO I": 108,
+          "LEYECO V": 84,
+          "CEBECO I": 82,
+          "BOHECO II": 78,
+          "MECO": 64
+        }
       }
     },
     "Mindanao": {
       "All": {
-        "counts": [239, 458, 130, 38, 24, 19, 7, 8, 3, 4, 4, 4, 7, 2, 2, 1, 0, 1, 8, 20, 3],
-        "benchmarks": { "p10": 72.5, "p15": 84.4, "p20": 88.4, "p29": 92.1 },
-        "percentiles": { "10": 3.08, "25": 5.0, "50": 6.0, "75": 10.4, "90": 21.94 },
-        "ec_percentiles": { "10": 3.12, "25": 5.2, "50": 5.5, "75": 11.2, "90": 37.03, "avg": 15.95 },
-        "total_count": 982, "total_capacity": 11931, "impact": { "co2_tons": 11583, "peak_mw": 9.5 }, "top_du": { "DLPC": 661 }
+        "counts": [
+          239,
+          458,
+          130,
+          38,
+          24,
+          19,
+          7,
+          8,
+          3,
+          4,
+          4,
+          4,
+          7,
+          2,
+          2,
+          1,
+          0,
+          1,
+          8,
+          20,
+          3
+        ],
+        "benchmarks": {
+          "p10": 72.50509164969449,
+          "p15": 84.41955193482688,
+          "p20": 88.39103869653768,
+          "p29": 92.05702647657841
+        },
+        "percentiles": {
+          "10": 3.08,
+          "25": 5.0,
+          "50": 6.0,
+          "75": 10.4,
+          "90": 21.944999999999986,
+          "avg": 12.1492383401222,
+          "max": 100.0,
+          "min": 1.0
+        },
+        "ec_percentiles": {
+          "10": 3.12,
+          "25": 5.2,
+          "50": 5.5,
+          "75": 11.2,
+          "90": 37.03199999999999,
+          "avg": 15.954124444444444,
+          "rank7": 59.55555555555555,
+          "count": 225
+        },
+        "meralco_percentiles": null,
+        "total_count": 982,
+        "total_capacity": 11930.55205,
+        "impact": {
+          "annual_gwh": 16.54767569335,
+          "homes": 6894,
+          "co2_tons": 11583.372985344999,
+          "peak_mw": 9.54444164
+        },
+        "top_du": {
+          "DLPC": 661,
+          "SOCOTECO I": 79,
+          "ILPI": 55,
+          "CEPALCO": 34,
+          "SOCOTECO II": 26,
+          "ZAMCELCO": 20,
+          "ANECO": 18,
+          "DASURECO": 14,
+          "MORESCO I": 14,
+          "MOELCI II": 9
+        }
+      },
+      "NCR": {
+        "total_count": 0,
+        "total_capacity": 0
+      },
+      "Outside NCR": {
+        "counts": [
+          239,
+          458,
+          130,
+          38,
+          24,
+          19,
+          7,
+          8,
+          3,
+          4,
+          4,
+          4,
+          7,
+          2,
+          2,
+          1,
+          0,
+          1,
+          8,
+          20,
+          3
+        ],
+        "benchmarks": {
+          "p10": 72.50509164969449,
+          "p15": 84.41955193482688,
+          "p20": 88.39103869653768,
+          "p29": 92.05702647657841
+        },
+        "percentiles": {
+          "10": 3.08,
+          "25": 5.0,
+          "50": 6.0,
+          "75": 10.4,
+          "90": 21.944999999999986,
+          "avg": 12.1492383401222,
+          "max": 100.0,
+          "min": 1.0
+        },
+        "ec_percentiles": {
+          "10": 3.12,
+          "25": 5.2,
+          "50": 5.5,
+          "75": 11.2,
+          "90": 37.03199999999999,
+          "avg": 15.954124444444444,
+          "rank7": 59.55555555555555,
+          "count": 225
+        },
+        "meralco_percentiles": null,
+        "total_count": 982,
+        "total_capacity": 11930.55205,
+        "impact": {
+          "annual_gwh": 16.54767569335,
+          "homes": 6894,
+          "co2_tons": 11583.372985344999,
+          "peak_mw": 9.54444164
+        },
+        "top_du": {
+          "DLPC": 661,
+          "SOCOTECO I": 79,
+          "ILPI": 55,
+          "CEPALCO": 34,
+          "SOCOTECO II": 26,
+          "ZAMCELCO": 20,
+          "ANECO": 18,
+          "DASURECO": 14,
+          "MORESCO I": 14,
+          "MOELCI II": 9
+        }
       }
     },
     "National": {
       "All": {
-        "counts": [6011, 10626, 3228, 875, 497, 214, 226, 83, 79, 65, 107, 39, 59, 20, 27, 29, 18, 12, 29, 220, 31],
-        "benchmarks": { "p10": 75.2, "p15": 88.5, "p20": 92.4, "p29": 95.2 },
-        "percentiles": { "10": 3.02, "25": 4.8, "50": 6.0, "75": 10.0, "90": 16.2 },
-        "ec_percentiles": { "10": 3.28, "25": 5.4, "50": 6.6, "75": 10.8, "90": 20.35, "avg": 11.22 },
-        "total_count": 22495, "total_capacity": 219379, "impact": { "co2_tons": 212995, "peak_mw": 175.5 }, "top_du": { "MERALCO": 11032 }
+        "counts": [
+          6011,
+          10626,
+          3228,
+          875,
+          497,
+          214,
+          226,
+          83,
+          79,
+          65,
+          107,
+          39,
+          59,
+          20,
+          27,
+          29,
+          18,
+          12,
+          29,
+          220,
+          31
+        ],
+        "benchmarks": {
+          "p10": 75.21671482551679,
+          "p15": 88.53078461880418,
+          "p20": 92.3627472771727,
+          "p29": 95.19893309624361
+        },
+        "percentiles": {
+          "10": 3.015,
+          "25": 4.8,
+          "50": 6.0,
+          "75": 10.0,
+          "90": 16.2,
+          "avg": 9.752327808401867,
+          "max": 100.0,
+          "min": 0.25
+        },
+        "ec_percentiles": {
+          "10": 3.279000000000001,
+          "25": 5.4,
+          "50": 6.6,
+          "75": 10.8,
+          "90": 20.35,
+          "avg": 11.219500636942676,
+          "rank7": 51.73566878980892,
+          "count": 6280
+        },
+        "meralco_percentiles": {
+          "10": 2.85,
+          "25": 3.6,
+          "50": 5.4,
+          "75": 8.19,
+          "90": 11.34,
+          "avg": 7.572565355329949,
+          "rank7": 68.8723712835388,
+          "rank15": 93.72733865119652,
+          "count": 11032
+        },
+        "total_count": 22495,
+        "total_capacity": 219378.61405,
+        "impact": {
+          "annual_gwh": 304.27813768735,
+          "homes": 126782,
+          "co2_tons": 212994.69638114498,
+          "peak_mw": 175.50289124000003
+        },
+        "top_du": {
+          "MERALCO": 11032,
+          "NEPC": 1325,
+          "AEC": 808,
+          "PELCO I": 741,
+          "DLPC": 661,
+          "VECO": 599,
+          "PENELCO": 438,
+          "TEI": 374,
+          "BATELEC II": 373,
+          "SFELAPCO": 373
+        }
       },
       "NCR": {
-        "counts": [1682, 2476, 774, 196, 89, 39, 41, 14, 12, 3, 13, 6, 7, 2, 0, 3, 3, 3, 5, 33, 2],
-        "benchmarks": { "p10": 78.4, "p15": 91.5, "p20": 95.1, "p29": 97.2 },
-        "percentiles": { "10": 3.0, "25": 4.05, "50": 5.5, "75": 9.66, "90": 13.2 },
+        "counts": [
+          1682,
+          2476,
+          774,
+          196,
+          89,
+          39,
+          41,
+          14,
+          12,
+          3,
+          13,
+          6,
+          7,
+          2,
+          0,
+          3,
+          3,
+          3,
+          5,
+          33,
+          2
+        ],
+        "benchmarks": {
+          "p10": 78.41939663150102,
+          "p15": 91.54173607255228,
+          "p20": 95.05830094392005,
+          "p29": 97.22376457523598
+        },
+        "percentiles": {
+          "10": 3.0,
+          "25": 4.05,
+          "50": 5.5,
+          "75": 9.655000000000001,
+          "90": 13.2,
+          "avg": 8.337256524153249,
+          "max": 100.0,
+          "min": 0.315
+        },
         "ec_percentiles": null,
-        "total_count": 5403, "total_capacity": 45046, "impact": { "co2_tons": 43735, "peak_mw": 36.0 }, "top_du": { "MERALCO": 5403 }
+        "meralco_percentiles": {
+          "10": 3.0,
+          "25": 4.05,
+          "50": 5.5,
+          "75": 9.655000000000001,
+          "90": 13.2,
+          "avg": 8.337256524153249,
+          "rank7": 62.63187118267629,
+          "rank15": 91.54173607255228,
+          "count": 5403
+        },
+        "total_count": 5403,
+        "total_capacity": 45046.197,
+        "impact": {
+          "annual_gwh": 62.479075239,
+          "homes": 26032,
+          "co2_tons": 43735.352667299994,
+          "peak_mw": 36.0369576
+        },
+        "top_du": {
+          "MERALCO": 5403
+        }
       },
       "Outside NCR": {
-        "counts": [4329, 8150, 2454, 679, 408, 175, 185, 69, 67, 62, 94, 33, 52, 18, 27, 26, 15, 9, 24, 187, 29],
-        "benchmarks": { "p10": 74.2, "p15": 87.6, "p20": 91.5, "p29": 94.6 },
-        "percentiles": { "10": 3.08, "25": 4.95, "50": 6.0, "75": 10.17, "90": 17.4 },
-        "ec_percentiles": { "10": 3.28, "25": 5.4, "50": 6.6, "75": 10.8, "90": 20.35, "avg": 11.22 },
-        "total_count": 17092, "total_capacity": 174332, "impact": { "co2_tons": 169259, "peak_mw": 139.5 }, "top_du": { "MERALCO": 5629 }
+        "counts": [
+          4329,
+          8150,
+          2454,
+          679,
+          408,
+          175,
+          185,
+          69,
+          67,
+          62,
+          94,
+          33,
+          52,
+          18,
+          27,
+          26,
+          15,
+          9,
+          24,
+          187,
+          29
+        ],
+        "benchmarks": {
+          "p10": 74.20430610812076,
+          "p15": 87.57898432014977,
+          "p20": 91.51064825649426,
+          "p29": 94.55885794523753
+        },
+        "percentiles": {
+          "10": 3.08,
+          "25": 4.95,
+          "50": 6.0,
+          "75": 10.17,
+          "90": 17.4,
+          "avg": 10.19964995611982,
+          "max": 100.0,
+          "min": 0.25
+        },
+        "ec_percentiles": {
+          "10": 3.279000000000001,
+          "25": 5.4,
+          "50": 6.6,
+          "75": 10.8,
+          "90": 20.35,
+          "avg": 11.219500636942676,
+          "rank7": 51.73566878980892,
+          "count": 6280
+        },
+        "meralco_percentiles": {
+          "10": 2.5,
+          "25": 3.36,
+          "50": 5.4,
+          "75": 7.04,
+          "90": 10.45,
+          "avg": 6.838575945993959,
+          "rank7": 74.86232012790904,
+          "rank15": 95.82519097530646,
+          "count": 5629
+        },
+        "total_count": 17092,
+        "total_capacity": 174332.41705,
+        "impact": {
+          "annual_gwh": 241.79906244834996,
+          "homes": 100749,
+          "co2_tons": 169259.34371384495,
+          "peak_mw": 139.46593363999997
+        },
+        "top_du": {
+          "MERALCO": 5629,
+          "NEPC": 1325,
+          "AEC": 808,
+          "PELCO I": 741,
+          "DLPC": 661,
+          "VECO": 599,
+          "PENELCO": 438,
+          "TEI": 374,
+          "BATELEC II": 373,
+          "SFELAPCO": 373
+        }
       }
     }
   },
-  "der": { "National": { "All": { "total_count": 145, "total_capacity": 184919, "benchmarks": {"p10":0,"p15":0,"p20":0,"p29":0}, "percentiles": {"10":98, "25":220, "50":601, "75":1580, "90":2932}, "ec_percentiles": { "10": 83.0, "25": 172.5, "50": 586.0, "75": 1279.5, "90": 2924.4, "avg": 1118.35 }, "impact": {"homes":106000, "co2_tons":179000, "peak_mw":147.9}, "top_du": {"MERALCO":75}, "counts": [0,0,0,0,0,0,1,0,2,0,0,0,2,1,1,1,3,3,1,0,130] } } },
-  "buckets": [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,1000000]
+  "der": {
+    "Luzon": {
+      "All": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          1,
+          1,
+          1,
+          3,
+          3,
+          0,
+          0,
+          99
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 88.0,
+          "25": 177.0,
+          "50": 601.0,
+          "75": 1518.0,
+          "90": 2886.1999999999994,
+          "avg": 1155.7629203539823,
+          "max": 13811.0,
+          "min": 33.0
+        },
+        "ec_percentiles": {
+          "10": 60.8,
+          "25": 83.0,
+          "50": 125.0,
+          "75": 326.0,
+          "90": 928.2,
+          "avg": 530.9142857142857,
+          "rank7": 0.0,
+          "count": 35
+        },
+        "meralco_percentiles": {
+          "10": 220.0,
+          "25": 419.5,
+          "50": 1016.0,
+          "75": 1933.0,
+          "90": 3079.6000000000004,
+          "avg": 1457.8428,
+          "rank7": 0.0,
+          "rank15": 0.0,
+          "count": 75
+        },
+        "total_count": 113,
+        "total_capacity": 130601.21,
+        "impact": {
+          "annual_gwh": 181.14387827000002,
+          "homes": 75476,
+          "co2_tons": 126800.714789,
+          "peak_mw": 104.48096800000002
+        },
+        "top_du": {
+          "MERALCO": 75,
+          "LEZ": 17,
+          "NEECO II - A1": 8,
+          "ZAMECO II": 2,
+          "CASURECO III": 1,
+          "TARELCO I": 1,
+          "SORECO II": 1,
+          "CENPELCO": 1,
+          "PANELCO III": 1,
+          "SFELAPCO": 1
+        }
+      },
+      "NCR": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 128.8,
+          "25": 499.0,
+          "50": 1580.0,
+          "75": 1933.0,
+          "90": 2474.3999999999996,
+          "avg": 1400.2,
+          "max": 3520.0,
+          "min": 104.0
+        },
+        "ec_percentiles": null,
+        "meralco_percentiles": {
+          "10": 128.8,
+          "25": 499.0,
+          "50": 1580.0,
+          "75": 1933.0,
+          "90": 2474.3999999999996,
+          "avg": 1400.2,
+          "rank7": 0.0,
+          "rank15": 0.0,
+          "count": 15
+        },
+        "total_count": 15,
+        "total_capacity": 21003.0,
+        "impact": {
+          "annual_gwh": 29.131160999999995,
+          "homes": 12137,
+          "co2_tons": 20391.812699999995,
+          "peak_mw": 16.802400000000002
+        },
+        "top_du": {
+          "MERALCO": 15
+        }
+      },
+      "Outside NCR": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          1,
+          1,
+          1,
+          3,
+          3,
+          0,
+          0,
+          84
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 83.0,
+          "25": 172.5,
+          "50": 586.0,
+          "75": 1279.5,
+          "90": 2924.4,
+          "avg": 1118.349081632653,
+          "max": 13811.0,
+          "min": 33.0
+        },
+        "ec_percentiles": {
+          "10": 60.8,
+          "25": 83.0,
+          "50": 125.0,
+          "75": 326.0,
+          "90": 928.2,
+          "avg": 530.9142857142857,
+          "rank7": 0.0,
+          "count": 35
+        },
+        "meralco_percentiles": {
+          "10": 220.9,
+          "25": 432.75,
+          "50": 862.95,
+          "75": 1814.25,
+          "90": 3093.8,
+          "avg": 1472.2534999999998,
+          "rank7": 0.0,
+          "rank15": 0.0,
+          "count": 60
+        },
+        "total_count": 98,
+        "total_capacity": 109598.20999999999,
+        "impact": {
+          "annual_gwh": 152.01271727,
+          "homes": 63338,
+          "co2_tons": 106408.902089,
+          "peak_mw": 87.678568
+        },
+        "top_du": {
+          "MERALCO": 60,
+          "LEZ": 17,
+          "NEECO II - A1": 8,
+          "ZAMECO II": 2,
+          "CASURECO III": 1,
+          "TARELCO I": 1,
+          "SORECO II": 1,
+          "CENPELCO": 1,
+          "PANELCO III": 1,
+          "SFELAPCO": 1
+        }
+      }
+    },
+    "Visayas": {
+      "All": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          18
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 197.0,
+          "25": 389.81,
+          "50": 547.0,
+          "75": 933.5,
+          "90": 1946.6,
+          "avg": 1726.0852631578946,
+          "max": 19696.0,
+          "min": 94.0
+        },
+        "ec_percentiles": {
+          "10": 387.858,
+          "25": 519.0,
+          "50": 580.5,
+          "75": 847.75,
+          "90": 1845.7000000000003,
+          "avg": 2277.8016666666667,
+          "rank7": 0.0,
+          "count": 12
+        },
+        "meralco_percentiles": null,
+        "total_count": 19,
+        "total_capacity": 32795.619999999995,
+        "impact": {
+          "annual_gwh": 45.487524939999986,
+          "homes": 18953,
+          "co2_tons": 31841.26745799999,
+          "peak_mw": 26.236495999999995
+        },
+        "top_du": {
+          "MECO": 2,
+          "VECO": 2,
+          "NEPC": 2,
+          "ILECO I": 2,
+          "ILECO III": 1,
+          "AKELCO": 1,
+          "LEYECO V": 1,
+          "SOLECO": 1,
+          "BOHECO I": 1,
+          "CAPELCO": 1
+        }
+      },
+      "NCR": {
+        "total_count": 0,
+        "total_capacity": 0
+      },
+      "Outside NCR": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          18
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 197.0,
+          "25": 389.81,
+          "50": 547.0,
+          "75": 933.5,
+          "90": 1946.6,
+          "avg": 1726.0852631578946,
+          "max": 19696.0,
+          "min": 94.0
+        },
+        "ec_percentiles": {
+          "10": 387.858,
+          "25": 519.0,
+          "50": 580.5,
+          "75": 847.75,
+          "90": 1845.7000000000003,
+          "avg": 2277.8016666666667,
+          "rank7": 0.0,
+          "count": 12
+        },
+        "meralco_percentiles": null,
+        "total_count": 19,
+        "total_capacity": 32795.619999999995,
+        "impact": {
+          "annual_gwh": 45.487524939999986,
+          "homes": 18953,
+          "co2_tons": 31841.26745799999,
+          "peak_mw": 26.236495999999995
+        },
+        "top_du": {
+          "MECO": 2,
+          "VECO": 2,
+          "NEPC": 2,
+          "ILECO I": 2,
+          "ILECO III": 1,
+          "AKELCO": 1,
+          "LEYECO V": 1,
+          "SOLECO": 1,
+          "BOHECO I": 1,
+          "CAPELCO": 1
+        }
+      }
+    },
+    "Mindanao": {
+      "All": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          13
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 364.936,
+          "25": 484.0,
+          "50": 1383.0,
+          "75": 2533.0,
+          "90": 3656.6000000000004,
+          "avg": 1655.5907692307692,
+          "max": 4122.0,
+          "min": 181.0
+        },
+        "ec_percentiles": {
+          "10": 422.5,
+          "25": 575.75,
+          "50": 1117.0,
+          "75": 2245.5,
+          "90": 3327.5,
+          "avg": 1622.3333333333333,
+          "rank7": 0.0,
+          "count": 6
+        },
+        "meralco_percentiles": null,
+        "total_count": 13,
+        "total_capacity": 21522.68,
+        "impact": {
+          "annual_gwh": 29.85195716,
+          "homes": 12438,
+          "co2_tons": 20896.370012,
+          "peak_mw": 17.218144000000002
+        },
+        "top_du": {
+          "CEPALCO": 5,
+          "ANECO": 2,
+          "DLPC": 2,
+          "ZAMCELCO": 1,
+          "BUSECO": 1,
+          "nan": 1,
+          "FIBECO": 1
+        }
+      },
+      "NCR": {
+        "total_count": 0,
+        "total_capacity": 0
+      },
+      "Outside NCR": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          13
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 364.936,
+          "25": 484.0,
+          "50": 1383.0,
+          "75": 2533.0,
+          "90": 3656.6000000000004,
+          "avg": 1655.5907692307692,
+          "max": 4122.0,
+          "min": 181.0
+        },
+        "ec_percentiles": {
+          "10": 422.5,
+          "25": 575.75,
+          "50": 1117.0,
+          "75": 2245.5,
+          "90": 3327.5,
+          "avg": 1622.3333333333333,
+          "rank7": 0.0,
+          "count": 6
+        },
+        "meralco_percentiles": null,
+        "total_count": 13,
+        "total_capacity": 21522.68,
+        "impact": {
+          "annual_gwh": 29.85195716,
+          "homes": 12438,
+          "co2_tons": 20896.370012,
+          "peak_mw": 17.218144000000002
+        },
+        "top_du": {
+          "CEPALCO": 5,
+          "ANECO": 2,
+          "DLPC": 2,
+          "ZAMCELCO": 1,
+          "BUSECO": 1,
+          "nan": 1,
+          "FIBECO": 1
+        }
+      }
+    },
+    "National": {
+      "All": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          1,
+          1,
+          1,
+          3,
+          3,
+          1,
+          0,
+          130
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 98.0,
+          "25": 220.0,
+          "50": 601.0,
+          "75": 1580.0,
+          "90": 2932.7999999999997,
+          "avg": 1275.3069655172415,
+          "max": 19696.0,
+          "min": 33.0
+        },
+        "ec_percentiles": {
+          "10": 67.2,
+          "25": 88.0,
+          "50": 298.0,
+          "75": 627.0,
+          "90": 1348.4000000000008,
+          "avg": 1049.9928301886791,
+          "rank7": 0.0,
+          "count": 53
+        },
+        "meralco_percentiles": {
+          "10": 220.0,
+          "25": 419.5,
+          "50": 1016.0,
+          "75": 1933.0,
+          "90": 3079.6000000000004,
+          "avg": 1457.8428,
+          "rank7": 0.0,
+          "rank15": 0.0,
+          "count": 75
+        },
+        "total_count": 145,
+        "total_capacity": 184919.51,
+        "impact": {
+          "annual_gwh": 256.48336036999996,
+          "homes": 106868,
+          "co2_tons": 179538.35225899995,
+          "peak_mw": 147.935608
+        },
+        "top_du": {
+          "MERALCO": 75,
+          "LEZ": 17,
+          "NEECO II - A1": 8,
+          "CEPALCO": 5,
+          "ZAMECO II": 2,
+          "DLPC": 2,
+          "ANECO": 2,
+          "ILECO I": 2,
+          "NEPC": 2,
+          "MECO": 2
+        }
+      },
+      "NCR": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 128.8,
+          "25": 499.0,
+          "50": 1580.0,
+          "75": 1933.0,
+          "90": 2474.3999999999996,
+          "avg": 1400.2,
+          "max": 3520.0,
+          "min": 104.0
+        },
+        "ec_percentiles": null,
+        "meralco_percentiles": {
+          "10": 128.8,
+          "25": 499.0,
+          "50": 1580.0,
+          "75": 1933.0,
+          "90": 2474.3999999999996,
+          "avg": 1400.2,
+          "rank7": 0.0,
+          "rank15": 0.0,
+          "count": 15
+        },
+        "total_count": 15,
+        "total_capacity": 21003.0,
+        "impact": {
+          "annual_gwh": 29.131160999999995,
+          "homes": 12137,
+          "co2_tons": 20391.812699999995,
+          "peak_mw": 16.802400000000002
+        },
+        "top_du": {
+          "MERALCO": 15
+        }
+      },
+      "Outside NCR": {
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          1,
+          1,
+          1,
+          3,
+          3,
+          1,
+          0,
+          115
+        ],
+        "benchmarks": {
+          "p10": 0.0,
+          "p15": 0.0,
+          "p20": 0.0,
+          "p29": 0.0
+        },
+        "percentiles": {
+          "10": 88.0,
+          "25": 220.0,
+          "50": 595.0,
+          "75": 1367.25,
+          "90": 2956.300000000001,
+          "avg": 1260.896230769231,
+          "max": 19696.0,
+          "min": 33.0
+        },
+        "ec_percentiles": {
+          "10": 67.2,
+          "25": 88.0,
+          "50": 298.0,
+          "75": 627.0,
+          "90": 1348.4000000000008,
+          "avg": 1049.9928301886791,
+          "rank7": 0.0,
+          "count": 53
+        },
+        "meralco_percentiles": {
+          "10": 220.9,
+          "25": 432.75,
+          "50": 862.95,
+          "75": 1814.25,
+          "90": 3093.8,
+          "avg": 1472.2534999999998,
+          "rank7": 0.0,
+          "rank15": 0.0,
+          "count": 60
+        },
+        "total_count": 130,
+        "total_capacity": 163916.51,
+        "impact": {
+          "annual_gwh": 227.35219937000002,
+          "homes": 94730,
+          "co2_tons": 159146.539559,
+          "peak_mw": 131.13320800000002
+        },
+        "top_du": {
+          "MERALCO": 60,
+          "LEZ": 17,
+          "NEECO II - A1": 8,
+          "CEPALCO": 5,
+          "ZAMECO II": 2,
+          "DLPC": 2,
+          "ANECO": 2,
+          "ILECO I": 2,
+          "NEPC": 2,
+          "MECO": 2
+        }
+      }
+    }
+  },
+  "buckets": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95,
+    100,
+    1000000
+  ]
 };
 
         let charts = {};
@@ -196,8 +1682,21 @@
                 ecPanel.style.display = 'block';
                 ['10','25','50','75','90'].forEach(k => document.getElementById(`ecP${k}`).innerText = (ec[k]?.toFixed(2) || '--') + ' kWp');
                 document.getElementById('ecAvg').innerText = (ec.avg?.toFixed(2) || '--') + ' kWp';
+                document.getElementById('ecRank7').innerText = (ec.rank7?.toFixed(1) || '--') + '% Rank';
             } else {
                 ecPanel.style.display = 'none';
+            }
+
+            const mer = d.meralco_percentiles;
+            const meralcoPanel = document.getElementById('meralcoPanel');
+            if(mer) {
+                meralcoPanel.style.display = 'block';
+                ['10','25','50','75','90'].forEach(k => document.getElementById(`merP${k}`).innerText = (mer[k]?.toFixed(2) || '--') + ' kWp');
+                document.getElementById('merAvg').innerText = (mer.avg?.toFixed(2) || '--') + ' kWp';
+                document.getElementById('merRank7').innerText = (mer.rank7?.toFixed(1) || '--') + '% Rank';
+                document.getElementById('merRank15').innerText = (mer.rank15?.toFixed(1) || '--') + '% Rank';
+            } else {
+                meralcoPanel.style.display = 'none';
             }
 
             charts.dist.data.labels = appData.buckets.slice(0,-2).map((b,i)=>`${b}k`);
