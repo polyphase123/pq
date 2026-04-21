@@ -76,6 +76,15 @@
                     <div class="panel-item" style="background:rgba(16, 185, 129, 0.1);"><span class="p-label" style="color:var(--success)">29kWp Common DT Rank</span><span class="p-value" id="pRank29" style="color:var(--success)">--</span></div>
                     <div style="padding: 1rem;"><div style="height: 120px;"><canvas id="percChart"></canvas></div></div>
                 </div>
+                <div class="panel" id="ecPanel" style="display: none; border: 1px solid #fed7aa;">
+                    <div class="panel-header" style="background:#fff7ed; color:#9a3412;">Electric Cooperative Percentiles (kWp)</div>
+                    <div class="panel-item"><span class="p-label">10th Percentile</span><span class="p-value" id="ecP10">--</span></div>
+                    <div class="panel-item"><span class="p-label">25th Percentile</span><span class="p-value" id="ecP25">--</span></div>
+                    <div class="panel-item"><span class="p-label">Median (50th)</span><span class="p-value" id="ecP50">--</span></div>
+                    <div class="panel-item"><span class="p-label">75th Percentile</span><span class="p-value" id="ecP75">--</span></div>
+                    <div class="panel-item"><span class="p-label">90th Percentile</span><span class="p-value" id="ecP90">--</span></div>
+                    <div class="panel-item" style="background:#fff7ed;"><span class="p-label" style="color:#c2410c">EC Average Capacity</span><span class="p-value" id="ecAvg" style="color:#c2410c">--</span></div>
+                </div>
                 <div style="padding:0 1rem; color:var(--text-muted); font-size:0.75rem; line-height:1.4;">
                     <strong>Technical Note:</strong> 29kWp represents the maximum hosting capacity of a 75kVA MERALCO Distribution Transformer (DT)—the most prevalent unit in the network.
                 </div>
@@ -85,14 +94,72 @@
     <script>
         const appData = {
   "net_metering": {
-    "National": {
-      "All": { "total_count": 22495, "total_capacity": 238218, "benchmarks": { "p10": 79.5, "p15": 87.2, "p20": 91.5, "p29": 95.8 }, "percentiles": { "10": 3.08, "25": 4.95, "50": 6.0, "75": 10.17, "90": 17.4 }, "impact": { "homes": 137000, "co2_tons": 231000, "peak_mw": 190.5 }, "top_du": {"MERALCO": 18270, "VECO": 1250}, "counts": [5130, 9780, 3040, 865, 465, 207, 221, 78, 79, 71, 101, 38, 57, 22, 35, 31, 15, 12, 30, 230, 38] },
-      "NCR": { "total_count": 4913, "total_capacity": 38871, "benchmarks": { "p10": 85.0, "p15": 92.0, "p20": 96.6, "p29": 98.4 }, "percentiles": { "10": 3.0, "25": 4.0, "50": 5.4, "75": 9.2, "90": 12.9 }, "impact": { "homes": 22400, "co2_tons": 37800, "peak_mw": 31.1 }, "top_du": {"MERALCO": 4913}, "counts": [1435, 2308, 730, 187, 81, 38, 40, 14, 12, 3, 13, 6, 6, 2, 0, 3, 3, 3, 5, 26, 2] }
+    "Luzon": {
+      "All": {
+        "counts": [4929, 8854, 2630, 676, 361, 140, 160, 54, 57, 39, 67, 23, 37, 13, 16, 9, 10, 7, 11, 117, 10],
+        "benchmarks": { "p10": 76.8, "p15": 90.3, "p20": 93.9, "p29": 96.4 },
+        "percentiles": { "10": 3.06, "25": 4.72, "50": 5.85, "75": 9.9, "90": 14.85 },
+        "ec_percentiles": { "10": 3.68, "25": 5.45, "50": 7.02, "75": 10.8, "90": 19.8, "avg": 10.81 },
+        "total_count": 18220, "total_capacity": 161935, "impact": { "co2_tons": 157222, "peak_mw": 129.5 }, "top_du": { "MERALCO": 11032 }
+      },
+      "NCR": {
+        "counts": [1682, 2476, 774, 196, 89, 39, 41, 14, 12, 3, 13, 6, 7, 2, 0, 3, 3, 3, 5, 33, 2],
+        "benchmarks": { "p10": 78.4, "p15": 91.5, "p20": 95.1, "p29": 97.2 },
+        "percentiles": { "10": 3.0, "25": 4.05, "50": 5.5, "75": 9.66, "90": 13.2 },
+        "ec_percentiles": null,
+        "total_count": 5403, "total_capacity": 45046, "impact": { "co2_tons": 43735, "peak_mw": 36.0 }, "top_du": { "MERALCO": 5403 }
+      },
+      "Outside NCR": {
+        "counts": [3247, 6378, 1856, 480, 272, 101, 119, 40, 45, 36, 54, 17, 30, 11, 16, 6, 7, 4, 6, 84, 8],
+        "benchmarks": { "p10": 76.2, "p15": 89.8, "p20": 93.4, "p29": 96.1 },
+        "percentiles": { "10": 3.12, "25": 4.95, "50": 6.0, "75": 9.99, "90": 15.24 },
+        "ec_percentiles": { "10": 3.68, "25": 5.45, "50": 7.02, "75": 10.8, "90": 19.8, "avg": 10.81 },
+        "total_count": 12817, "total_capacity": 116889, "impact": { "co2_tons": 113487, "peak_mw": 93.5 }, "top_du": { "MERALCO": 5629 }
+      }
     },
-    "Luzon": { "All": { "total_count": 18271, "total_capacity": 167817, "benchmarks": { "p10": 82.1, "p15": 89.5, "p20": 93.8, "p29": 96.5 }, "percentiles": { "10": 3.12, "25": 4.95, "50": 6.0, "75": 10.15, "90": 15.5 }, "impact": { "homes": 96700, "co2_tons": 162900, "peak_mw": 134.2 }, "top_du": {"MERALCO": 17188}, "counts": [4580, 8820, 2750, 750, 400, 160, 180, 60, 65, 45, 70, 25, 40, 15, 20, 12, 10, 8, 10, 130, 20] } },
-    "Visayas": { "All": { "total_count": 3267, "total_capacity": 57172, "benchmarks": { "p10": 75.0, "p15": 85.0, "p20": 88.5, "p29": 92.0 }, "percentiles": { "10": 3.4, "25": 5.1, "50": 6.8, "75": 11.2, "90": 28.5 }, "impact": { "homes": 32900, "co2_tons": 55400, "peak_mw": 45.7 }, "top_du": {"VECO": 1250}, "counts": [267, 506, 163, 63, 34, 34, 23, 11, 8, 19, 21, 8, 11, 4, 11, 14, 2, 1, 12, 59, 5] } }
+    "Visayas": {
+      "All": {
+        "counts": [843, 1314, 468, 161, 112, 55, 59, 21, 19, 22, 36, 12, 15, 5, 9, 19, 8, 4, 10, 83, 18],
+        "benchmarks": { "p10": 67.1, "p15": 79.9, "p20": 84.9, "p29": 89.3 },
+        "percentiles": { "10": 2.86, "25": 4.95, "50": 6.54, "75": 12.06, "90": 30.21 },
+        "ec_percentiles": { "10": 1.05, "25": 3.24, "50": 5.55, "75": 10.8, "90": 25.48, "avg": 12.08 },
+        "total_count": 3293, "total_capacity": 45513, "impact": { "co2_tons": 44189, "peak_mw": 36.4 }, "top_du": { "NEPC": 1325 }
+      }
+    },
+    "Mindanao": {
+      "All": {
+        "counts": [239, 458, 130, 38, 24, 19, 7, 8, 3, 4, 4, 4, 7, 2, 2, 1, 0, 1, 8, 20, 3],
+        "benchmarks": { "p10": 72.5, "p15": 84.4, "p20": 88.4, "p29": 92.1 },
+        "percentiles": { "10": 3.08, "25": 5.0, "50": 6.0, "75": 10.4, "90": 21.94 },
+        "ec_percentiles": { "10": 3.12, "25": 5.2, "50": 5.5, "75": 11.2, "90": 37.03, "avg": 15.95 },
+        "total_count": 982, "total_capacity": 11931, "impact": { "co2_tons": 11583, "peak_mw": 9.5 }, "top_du": { "DLPC": 661 }
+      }
+    },
+    "National": {
+      "All": {
+        "counts": [6011, 10626, 3228, 875, 497, 214, 226, 83, 79, 65, 107, 39, 59, 20, 27, 29, 18, 12, 29, 220, 31],
+        "benchmarks": { "p10": 75.2, "p15": 88.5, "p20": 92.4, "p29": 95.2 },
+        "percentiles": { "10": 3.02, "25": 4.8, "50": 6.0, "75": 10.0, "90": 16.2 },
+        "ec_percentiles": { "10": 3.28, "25": 5.4, "50": 6.6, "75": 10.8, "90": 20.35, "avg": 11.22 },
+        "total_count": 22495, "total_capacity": 219379, "impact": { "co2_tons": 212995, "peak_mw": 175.5 }, "top_du": { "MERALCO": 11032 }
+      },
+      "NCR": {
+        "counts": [1682, 2476, 774, 196, 89, 39, 41, 14, 12, 3, 13, 6, 7, 2, 0, 3, 3, 3, 5, 33, 2],
+        "benchmarks": { "p10": 78.4, "p15": 91.5, "p20": 95.1, "p29": 97.2 },
+        "percentiles": { "10": 3.0, "25": 4.05, "50": 5.5, "75": 9.66, "90": 13.2 },
+        "ec_percentiles": null,
+        "total_count": 5403, "total_capacity": 45046, "impact": { "co2_tons": 43735, "peak_mw": 36.0 }, "top_du": { "MERALCO": 5403 }
+      },
+      "Outside NCR": {
+        "counts": [4329, 8150, 2454, 679, 408, 175, 185, 69, 67, 62, 94, 33, 52, 18, 27, 26, 15, 9, 24, 187, 29],
+        "benchmarks": { "p10": 74.2, "p15": 87.6, "p20": 91.5, "p29": 94.6 },
+        "percentiles": { "10": 3.08, "25": 4.95, "50": 6.0, "75": 10.17, "90": 17.4 },
+        "ec_percentiles": { "10": 3.28, "25": 5.4, "50": 6.6, "75": 10.8, "90": 20.35, "avg": 11.22 },
+        "total_count": 17092, "total_capacity": 174332, "impact": { "co2_tons": 169259, "peak_mw": 139.5 }, "top_du": { "MERALCO": 5629 }
+      }
+    }
   },
-  "der": { "National": { "All": { "total_count": 145, "total_capacity": 184919, "benchmarks": {"p10":0,"p15":0,"p20":0,"p29":0}, "percentiles": {"10":98, "25":220, "50":601, "75":1580, "90":2932}, "impact": {"homes":106000, "co2_tons":179000, "peak_mw":147.9}, "top_du": {"MERALCO":75}, "counts": [0,0,0,0,0,0,1,0,2,0,0,0,2,1,1,1,3,3,1,0,130] } } },
+  "der": { "National": { "All": { "total_count": 145, "total_capacity": 184919, "benchmarks": {"p10":0,"p15":0,"p20":0,"p29":0}, "percentiles": {"10":98, "25":220, "50":601, "75":1580, "90":2932}, "ec_percentiles": { "10": 83.0, "25": 172.5, "50": 586.0, "75": 1279.5, "90": 2924.4, "avg": 1118.35 }, "impact": {"homes":106000, "co2_tons":179000, "peak_mw":147.9}, "top_du": {"MERALCO":75}, "counts": [0,0,0,0,0,0,1,0,2,0,0,0,2,1,1,1,3,3,1,0,130] } } },
   "buckets": [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,1000000]
 };
 
@@ -122,6 +189,16 @@
             });
             
             ['10','25','50','75','90'].forEach(k => document.getElementById(`p${k}`).innerText = (d.percentiles?.[k]?.toFixed(2) || '--') + ' kWp');
+
+            const ec = d.ec_percentiles;
+            const ecPanel = document.getElementById('ecPanel');
+            if(ec) {
+                ecPanel.style.display = 'block';
+                ['10','25','50','75','90'].forEach(k => document.getElementById(`ecP${k}`).innerText = (ec[k]?.toFixed(2) || '--') + ' kWp');
+                document.getElementById('ecAvg').innerText = (ec.avg?.toFixed(2) || '--') + ' kWp';
+            } else {
+                ecPanel.style.display = 'none';
+            }
 
             charts.dist.data.labels = appData.buckets.slice(0,-2).map((b,i)=>`${b}k`);
             charts.dist.data.datasets[0].data = d.counts || []; charts.dist.update();
